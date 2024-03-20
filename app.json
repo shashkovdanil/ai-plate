@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "ai-plate",
-    "slug": "ai-plate",
+    "slug": "aiplate",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -25,6 +25,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "38454a80-3d6f-436d-ad5c-49a5a9a181b8"
+      }
+    },
+    "owner": "shashkovdanil"
   }
 }
