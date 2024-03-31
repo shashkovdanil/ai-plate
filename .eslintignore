@@ -1,0 +1,6 @@
+.expo
+.vscode
+node_modules
+drizzle
+assets
+metro.config.js

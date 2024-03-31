@@ -1,0 +1,15 @@
+{
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "universe/native",
+    "plugin:@tanstack/eslint-plugin-query/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "rules": {
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      { "argsIgnorePattern": "^_|children" }
+    ],
+    "react/no-unescaped-entities": "off"
+  }
+}

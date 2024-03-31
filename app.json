@@ -27,10 +27,23 @@
       "favicon": "./assets/favicon.png"
     },
     "extra": {
+      "web": {
+        "bundler": "metro"
+      },
       "eas": {
         "projectId": "38454a80-3d6f-436d-ad5c-49a5a9a181b8"
       }
     },
-    "owner": "shashkovdanil"
+    "owner": "shashkovdanil",
+    "plugins": [
+      "expo-font",
+      "expo-router"
+    ],
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/38454a80-3d6f-436d-ad5c-49a5a9a181b8"
+    }
   }
 }
