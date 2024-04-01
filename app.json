@@ -1,13 +1,15 @@
 {
   "expo": {
-    "name": "ai-plate",
+    "name": "AI Plate",
+    "owner": "shashkovdanil",
     "slug": "aiplate",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "icon": "./assets/images/icon.png",
+    "scheme": "aiplate",
+    "userInterfaceStyle": "automatic",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/images/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -15,35 +17,37 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.shashkovdanil.aiplate"
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
-    },
-    "extra": {
-      "web": {
-        "bundler": "metro"
-      },
+      "bundler": "metro",
+      "output": "static",
+      "favicon": "./assets/images/favicon.png",
       "eas": {
         "projectId": "38454a80-3d6f-436d-ad5c-49a5a9a181b8"
       }
     },
-    "owner": "shashkovdanil",
     "plugins": [
       "expo-font",
       "expo-router"
     ],
-    "runtimeVersion": {
-      "policy": "appVersion"
+    "experiments": {
+      "typedRoutes": true
     },
-    "updates": {
-      "url": "https://u.expo.dev/38454a80-3d6f-436d-ad5c-49a5a9a181b8"
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "38454a80-3d6f-436d-ad5c-49a5a9a181b8"
+      }
     }
   }
 }

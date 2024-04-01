@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "sqlite",
-  "id": "6ec99349-74cb-462a-9cc5-d46d40ea07c5",
+  "id": "25daf322-db5d-41b8-9f2f-9570a6a69b5d",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "plate": {
@@ -18,42 +18,42 @@
           "name": "food",
           "type": "text",
           "primaryKey": false,
-          "notNull": false,
+          "notNull": true,
           "autoincrement": false
         },
         "calories": {
           "name": "calories",
           "type": "integer",
           "primaryKey": false,
-          "notNull": false,
+          "notNull": true,
           "autoincrement": false
         },
         "proteins": {
           "name": "proteins",
           "type": "integer",
           "primaryKey": false,
-          "notNull": false,
+          "notNull": true,
           "autoincrement": false
         },
         "fats": {
           "name": "fats",
           "type": "integer",
           "primaryKey": false,
-          "notNull": false,
+          "notNull": true,
           "autoincrement": false
         },
         "carbs": {
           "name": "carbs",
           "type": "integer",
           "primaryKey": false,
-          "notNull": false,
+          "notNull": true,
           "autoincrement": false
         },
         "eaten": {
           "name": "eaten",
           "type": "integer",
           "primaryKey": false,
-          "notNull": false,
+          "notNull": true,
           "autoincrement": false
         },
         "created_at": {
