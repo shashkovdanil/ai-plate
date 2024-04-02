@@ -15,6 +15,9 @@ export const plate = sqliteTable(
       .default(sql`CURRENT_TIMESTAMP`)
       .notNull(),
     updatedAt: text('updated_at'),
+    date: text('date')
+      .default(sql`CURRENT_TIMESTAMP`)
+      .notNull(),
   },
   table => {
     return {

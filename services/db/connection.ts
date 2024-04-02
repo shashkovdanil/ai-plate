@@ -4,7 +4,7 @@ import { openDatabaseSync } from 'expo-sqlite/next'
 
 import migrations from '../../drizzle/migrations'
 
-export const dbName = 'aiplate.db'
+export const dbName = 'aiplate2.db'
 
 const expoDb = openDatabaseSync(dbName)
 

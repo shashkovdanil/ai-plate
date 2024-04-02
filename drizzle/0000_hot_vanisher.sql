@@ -7,7 +7,8 @@ CREATE TABLE `plate` (
 	`carbs` integer NOT NULL,
 	`eaten` integer NOT NULL,
 	`created_at` text DEFAULT CURRENT_TIMESTAMP NOT NULL,
-	`updated_at` text
+	`updated_at` text,
+	`date` text DEFAULT CURRENT_TIMESTAMP NOT NULL
 );
 --> statement-breakpoint
 CREATE INDEX `created_at_idx` ON `plate` (`created_at`);--> statement-breakpoint

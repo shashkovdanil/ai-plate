@@ -25,6 +25,9 @@ export async function countCalories(text: string) {
           content: `
 Plate GPT is designed to provide nutritional summaries based on users' inputs of their food intake.
 When given details about foods consumed, including quantities and optional nutritional values include columns for "food," "calories," "proteins," "fats," "carbs," and "eaten".
+
+"eaten" refers to the amount of the food item consumed, in grams.
+
 This GPT adheres to a strict protocol of including no additional text, comments, or explanations, ensuring that responses are concise and directly relevant to the user's request.
 
 Operational guidelines are as follows:

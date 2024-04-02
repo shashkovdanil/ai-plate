@@ -1,5 +1,5 @@
-import { Stack, router, useLocalSearchParams } from 'expo-router'
-import { useMemo } from 'react'
+import { Link, Stack, router, useLocalSearchParams } from 'expo-router'
+import { useMemo, useState } from 'react'
 import { FlatList, KeyboardAvoidingView, View } from 'react-native'
 
 import { DatePicker } from '~/components/DatePicker'
@@ -16,9 +16,15 @@ import { Input } from '~/components/ui/input'
 import { Text } from '~/components/ui/text'
 import { buildDateTitle, formatNumber, toDate } from '~/lib/utils'
 import type { Plate } from '~/services/api/plate/entities'
-import { useCreatePlate, usePlatesByDate } from '~/services/api/plate/hooks'
+import {
+  useCreatePlate,
+  usePlatesByDate,
+  useRemovePlate,
+} from '~/services/api/plate/hooks'
 
 export default function Screen() {
+  const [value, setValue] = useState('')
+
   const params = useLocalSearchParams<{ date?: string }>()
   const date = toDate(params.date)
   const title = buildDateTitle(date)
@@ -26,6 +32,7 @@ export default function Screen() {
   const { data = [], refetch } = usePlatesByDate()
 
   const create = useCreatePlate()
+  const remove = useRemovePlate()
 
   const total = useMemo(() => {
     return data.reduce(
@@ -52,16 +59,17 @@ export default function Screen() {
         <View className="flex-1">
           <FlatList<Plate>
             data={data}
+            ItemSeparatorComponent={() => <View className="h-4" />}
             renderItem={({ item }) => {
               return (
                 <Card>
                   <CardHeader>
-                    <CardTitle className="text-lg">
+                    <CardTitle className="text-md">
                       {item.food} ({item.eaten}g)
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <View className="mt-2 flex flex-row">
+                    <View className="flex flex-row">
                       <View className="flex-1">
                         <Text className="mb-2 text-xs text-muted-foreground">
                           Calories
@@ -90,18 +98,28 @@ export default function Screen() {
                   </CardContent>
                   <CardFooter>
                     <View className="ml-auto flex flex-row gap-4">
+                      <Link asChild href={`/edit/${item.id}`}>
+                        <Button
+                          variant="outline"
+                          className="flex flex-row gap-2"
+                          size="sm"
+                        >
+                          <Edit2 size={14} className="text-foreground" />
+                          <Text>Edit</Text>
+                        </Button>
+                      </Link>
+
                       <Button
                         variant="outline"
                         className="flex flex-row gap-2"
                         size="sm"
-                      >
-                        <Edit2 size={14} className="text-foreground" />
-                        <Text>Edit</Text>
-                      </Button>
-                      <Button
-                        variant="outline"
-                        className="flex flex-row gap-2"
-                        size="sm"
+                        onPress={() => {
+                          remove.mutate(item.id, {
+                            onSuccess() {
+                              refetch()
+                            },
+                          })
+                        }}
                       >
                         <Trash2 size={14} className="text-foreground" />
                         <Text>Remove</Text>
@@ -113,7 +131,7 @@ export default function Screen() {
             }}
           />
         </View>
-        <View className="mb-4 rounded-lg px-4">
+        <View className="mb-4 rounded-lg border-t border-border px-4 pt-4">
           <Text className="font-main800 text-sm capitalize">Total</Text>
           <View className="mt-2 flex flex-row">
             <View className="flex-1">
@@ -142,30 +160,49 @@ export default function Screen() {
           keyboardVerticalOffset={140}
         >
           <Input
-            placeholder="Text what you have eaten..."
+            placeholder="Add with AI"
             returnKeyType="send"
             blurOnSubmit
             multiline
+            value={value}
+            onChangeText={setValue}
             onSubmitEditing={({ nativeEvent }) => {
-              create.mutate(nativeEvent.text, {
-                onSuccess() {
-                  refetch()
-                  nativeEvent.text = ''
+              create.mutate(
+                {
+                  prompt: nativeEvent.text,
+                  date: date.toISOString(),
                 },
-              })
+                {
+                  onSuccess() {
+                    refetch()
+                    setValue('')
+                  },
+                },
+              )
             }}
           />
         </KeyboardAvoidingView>
-        <DatePicker
-          value={date}
-          onChange={(_, d) => {
-            if (d) router.setParams({ date: d.toISOString() })
-          }}
-        >
-          <Button className="mt-4">
-            <Text>Select Date</Text>
-          </Button>
-        </DatePicker>
+        <View className="mt-4 flex flex-row gap-4">
+          <View className="flex-1">
+            <DatePicker
+              value={date}
+              onChange={(_, d) => {
+                if (d) router.setParams({ date: d.toISOString() })
+              }}
+            >
+              <Button>
+                <Text>Select Date</Text>
+              </Button>
+            </DatePicker>
+          </View>
+          <View className="flex-1">
+            <Link asChild href="/add">
+              <Button variant="secondary">
+                <Text>Add Manually</Text>
+              </Button>
+            </Link>
+          </View>
+        </View>
       </View>
     </>
   )

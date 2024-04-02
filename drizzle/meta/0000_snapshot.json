@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "sqlite",
-  "id": "25daf322-db5d-41b8-9f2f-9570a6a69b5d",
+  "id": "38d53c83-e9e5-47b4-9a7d-339aec28a06e",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "plate": {
@@ -70,6 +70,14 @@
           "primaryKey": false,
           "notNull": false,
           "autoincrement": false
+        },
+        "date": {
+          "name": "date",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "CURRENT_TIMESTAMP"
         }
       },
       "indexes": {

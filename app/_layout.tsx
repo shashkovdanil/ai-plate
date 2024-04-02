@@ -55,7 +55,22 @@ export default function RootLayout() {
               paddingHorizontal: 16,
             },
           }}
-        />
+        >
+          <Stack.Screen
+            name="add"
+            options={{
+              headerShown: false,
+              presentation: 'modal',
+            }}
+          />
+          <Stack.Screen
+            name="edit/[id]"
+            options={{
+              headerShown: false,
+              presentation: 'modal',
+            }}
+          />
+        </Stack>
         <PortalHost />
       </ThemeProvider>
     </QueryClientProvider>
