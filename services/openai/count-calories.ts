@@ -60,8 +60,6 @@ Responses are in JSON format. For example:
       },
     })
 
-    console.log(completion.choices[0].message.content)
-
     const parsed = schema.safeParse(
       JSON.parse(completion.choices[0].message.content || '{}'),
     )

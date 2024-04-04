@@ -196,7 +196,7 @@ export default function Screen() {
             </DatePicker>
           </View>
           <View className="flex-1">
-            <Link asChild href="/add">
+            <Link asChild href="/main">
               <Button variant="secondary">
                 <Text>Add Manually</Text>
               </Button>

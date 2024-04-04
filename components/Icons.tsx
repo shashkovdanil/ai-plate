@@ -1,5 +1,8 @@
 import {
   Calendar,
+  Check,
+  ChevronDown,
+  ChevronUp,
   Edit2,
   Info,
   LucideIcon,
@@ -22,6 +25,9 @@ function interopIcon(icon: LucideIcon) {
   })
 }
 
+interopIcon(Check)
+interopIcon(ChevronDown)
+interopIcon(ChevronUp)
 interopIcon(Info)
 interopIcon(MoonStar)
 interopIcon(Sun)
@@ -30,4 +36,15 @@ interopIcon(X)
 interopIcon(Trash2)
 interopIcon(Edit2)
 
-export { Info, MoonStar, Sun, Calendar, X, Trash2, Edit2 }
+export {
+  Info,
+  MoonStar,
+  Sun,
+  Calendar,
+  X,
+  Trash2,
+  Edit2,
+  Check,
+  ChevronDown,
+  ChevronUp,
+}
